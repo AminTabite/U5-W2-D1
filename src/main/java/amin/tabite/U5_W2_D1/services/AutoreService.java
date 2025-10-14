@@ -2,6 +2,7 @@ package amin.tabite.U5_W2_D1.services;
 
 
 import amin.tabite.U5_W2_D1.entities.Autore;
+import amin.tabite.U5_W2_D1.payloads.NewAutore;
 import amin.tabite.U5_W2_D1.payloads.NewAutorePayload;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

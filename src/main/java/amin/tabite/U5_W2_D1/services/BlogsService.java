@@ -1,11 +1,10 @@
 package amin.tabite.U5_W2_D1.services;
 
 
-import amin.tabite.U5_W2_D1.entities.BlogPost;
-import amin.tabite.U5_W2_D1.payloads.NewBlogPayload;
+import amin.tabite.U5_W2_D1.entities.Autori;
+import amin.tabite.U5_W2_D1.payloads.NewAutore;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import org.springframework.web.ErrorResponseException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,27 +18,27 @@ import java.util.List;
 public class BlogsService {
 
 
-    public List<BlogPost> blogslist = new ArrayList<>();
+    public List<Autori> blogslist = new ArrayList<>();
 
 
-    public List<BlogPost> findAll() {return this.blogslist;} // vedi tutti user
+    public List<Autori> findAll() {return this.blogslist;} // vedi tutti user
 
 
-   public BlogPost savesudb(NewBlogPayload payload){
-        BlogPost newBlog = new BlogPost( payload.getCategoria() , payload.getTitolo(), payload.getContenuto(), payload.getTempolettura());
+   public Autori savesudb(NewAutore payload){
+        Autori newBlog = new Autori( payload.getCategoria() , payload.getTitolo(), payload.getContenuto(), payload.getTempolettura());
        this.blogslist.add(newBlog);
        log.info("Blog" + newBlog.getTitolo() + "salvato correttamento");
                 return newBlog;
    }
 
 
-   public BlogPost findById(long blogid){
+   public Autori findById(long blogid){
 
-        BlogPost found = null;
-        for (BlogPost blogPost: this.blogslist){
+        Autori found = null;
+        for (Autori autori : this.blogslist){
 
-            if (blogPost.getBlogid() == blogid)
-                blogPost= found;
+            if (autori.getBlogid() == blogid)
+                autori = found;
         }
 
         if (found == null) throw new Error(" blog non trovato");
@@ -51,14 +50,14 @@ public class BlogsService {
    }
 
 
-   public BlogPost findByIdAndUpdate(long blogid, NewBlogPayload payload){
+   public Autori findByIdAndUpdate(long blogid, NewAutore payload){
 
-        BlogPost found = null;
-        for(BlogPost blogPost: blogslist) {
+        Autori found = null;
+        for(Autori autori : blogslist) {
 
-            if (blogPost.getBlogid() == blogid) {
+            if (autori.getBlogid() == blogid) {
 
-                found= blogPost;
+                found= autori;
                 found.setCategoria(payload.getCategoria());
                 found.setTitolo(payload.getTitolo());
                 found.setContenuto(payload.getContenuto());
@@ -78,12 +77,12 @@ public class BlogsService {
 
    public void findByIdAndDelete(long blogid) {
 
-        BlogPost found = null;
+        Autori found = null;
 
 
-        for (BlogPost blogPost : this.blogslist) {
+        for (Autori autori : this.blogslist) {
 
-            if(blogPost.getBlogid() == blogid) found=blogPost;
+            if(autori.getBlogid() == blogid) found= autori;
 
         }
         if (found == null) throw new Error("cancellazione fallita");
