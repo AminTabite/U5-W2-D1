@@ -18,7 +18,7 @@ public class Autore {
     private String datanascita;
     private String avatar;
 
-    public Autore(long idautore, String nome, String cognome, String email, String datanascita, String avatar) {
+    public Autore( String nome, String cognome, String email, String datanascita,) {
         Random rnd = new Random();
 
         this.idautore = rnd.nextInt(1,100);

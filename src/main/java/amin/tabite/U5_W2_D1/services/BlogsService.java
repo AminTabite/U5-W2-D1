@@ -5,6 +5,7 @@ import amin.tabite.U5_W2_D1.entities.BlogPost;
 import amin.tabite.U5_W2_D1.payloads.NewBlogPayload;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.web.ErrorResponseException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,6 +50,49 @@ public class BlogsService {
 
    }
 
+
+   public BlogPost findByIdAndUpdate(long blogid, NewBlogPayload payload){
+
+        BlogPost found = null;
+        for(BlogPost blogPost: blogslist) {
+
+            if (blogPost.getBlogid() == blogid) {
+
+                found= blogPost;
+                found.setCategoria(payload.getCategoria());
+                found.setTitolo(payload.getTitolo());
+                found.setContenuto(payload.getContenuto());
+                found.setTempolettura(payload.getTempolettura());
+
+            }
+
+
+
+        }
+
+        if (found == null) throw new Error("modifica fallita");
+
+       return found;
+   }
+
+
+   public void findByIdAndDelete(long blogid) {
+
+        BlogPost found = null;
+
+
+        for (BlogPost blogPost : this.blogslist) {
+
+            if(blogPost.getBlogid() == blogid) found=blogPost;
+
+        }
+        if (found == null) throw new Error("cancellazione fallita");
+        this.blogslist.remove(found);
+
+
+
+
+   }
 
 
 
