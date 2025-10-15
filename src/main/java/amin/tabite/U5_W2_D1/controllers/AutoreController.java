@@ -1,7 +1,6 @@
 package amin.tabite.U5_W2_D1.controllers;
 
 import amin.tabite.U5_W2_D1.entities.Autore;
-import amin.tabite.U5_W2_D1.payloads.NewAutore;
 import amin.tabite.U5_W2_D1.payloads.NewAutorePayload;
 import amin.tabite.U5_W2_D1.services.AutoreService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/blogpost")
+@RequestMapping("/autori")
 
 public class AutoreController {
 
@@ -21,7 +20,7 @@ public class AutoreController {
 
 
 
-    // 1 get http://localhost:8080/blogpost
+    // 1 get http://localhost:5000/autore
     @GetMapping
     public List<Autore> getAutori(){
 
@@ -30,7 +29,7 @@ public class AutoreController {
     }
 
 
-    // 2 post http://localhost:8080/b   logpost
+    // 2 post http://localhost:5000/blogpost
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Autore createAutore(@RequestBody NewAutorePayload body) {
@@ -38,7 +37,7 @@ public class AutoreController {
     }
 
 
-    //3 get http://localhost:8080/autore/{blogid}
+    //3 get http://localhost:5000/autori/{blogid}
 
     @GetMapping("/{autoreid}")
     public Autore getautoreId(@PathVariable long autoreid){
@@ -47,9 +46,9 @@ public class AutoreController {
     }
 
 
-    //4 put http://localhost:8080/blogpost/{blogid}
+    //4 put http://localhost:5000/autori{blogid}
 
-    @PutMapping("/blogid")
+    @PutMapping("/autoreid")
     public Autore getBlogByIdAndUpdate(@PathVariable long autoreid, @RequestBody NewAutorePayload body){
         return this.autoreService.findByIdAndUpdate(autoreid, body);
     }
@@ -57,10 +56,10 @@ public class AutoreController {
 
     //5 delete  public void findByIdAndDelete(long blogid)
 
-    @DeleteMapping("/{blogId}")
+    @DeleteMapping("/{autoriId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void getBlogByIdAndDelete(@PathVariable long blogid) {
-        this.autoreService.findByIdAndDelete(blogid);
+    public void getAutoreByIdAndDelete(@PathVariable long autoreid) {
+        this.autoreService.findByIdAndDelete(autoreid);
     }
 
 }

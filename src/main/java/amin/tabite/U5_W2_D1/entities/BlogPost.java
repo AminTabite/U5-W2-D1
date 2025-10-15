@@ -10,7 +10,7 @@ import java.util.Random;
 @Setter
 @Getter
 @ToString
-public class Autori {
+public class BlogPost {
 
     private long blogid;
     private String categoria;
@@ -20,7 +20,7 @@ public class Autori {
     private int tempolettura;
 
 
-    public Autori(String categoria, String titolo, String cover, int tempolettura) {
+    public BlogPost(String categoria, String titolo, String cover, int tempolettura) {
 
         Random rnd = new Random();
         this.blogid = rnd.nextInt(1,1000);

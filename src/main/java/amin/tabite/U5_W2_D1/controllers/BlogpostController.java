@@ -1,7 +1,7 @@
 package amin.tabite.U5_W2_D1.controllers;
 
-import amin.tabite.U5_W2_D1.entities.Autori;
-import amin.tabite.U5_W2_D1.payloads.NewAutore;
+import amin.tabite.U5_W2_D1.entities.BlogPost;
+import amin.tabite.U5_W2_D1.payloads.NewBlogPayload;
 import amin.tabite.U5_W2_D1.services.BlogsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,9 +20,9 @@ public class BlogpostController {
 
 
 
-    // 1 get http://localhost:8080/blogpost
+    // 1 get http://localhost:5000/blogpost
     @GetMapping
-    public List<Autori> getBlogs(){
+    public List<BlogPost> getBlogs(){
 
         return this.blogsService.findAll();
 
@@ -32,7 +32,7 @@ public class BlogpostController {
     // 2 post http://localhost:8080/b   logpost
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Autori createBlogpost(@RequestBody NewAutore body) {
+    public BlogPost createBlogpost(@RequestBody NewBlogPayload body) {
         return blogsService.savesudb(body);
     }
 
@@ -40,16 +40,16 @@ public class BlogpostController {
     //3 get http://localhost:8080/blogpost/{blogid}
 
     @GetMapping("/{blogid}")
-    public Autori getBlogId(@PathVariable long blogid){
+    public BlogPost getBlogId(@PathVariable long blogid){
         return blogsService.findById(blogid);
 
     }
 
 
-    //4 put http://localhost:8080/blogpost/{blogid}
+    //4 put http://localhost:5000/blogpost/{blogid}
 
     @PutMapping("/blogid")
-    public Autori getBlogByIdAndUpdate(@PathVariable long blogid, @RequestBody NewAutore body){
+    public BlogPost getBlogByIdAndUpdate(@PathVariable long blogid, @RequestBody NewBlogPayload body){
         return this.blogsService.findByIdAndUpdate(blogid, body);
     }
 

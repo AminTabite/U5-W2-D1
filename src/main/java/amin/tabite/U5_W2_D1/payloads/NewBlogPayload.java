@@ -1,14 +1,13 @@
 package amin.tabite.U5_W2_D1.payloads;
 
 
-import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
 @Setter
 @ToString
 
-public class NewAutore {
+public class NewBlogPayload {
 
     private String categoria;
     private  String titolo;
@@ -16,7 +15,7 @@ public class NewAutore {
     private int tempolettura;
 
 
-    public NewAutore(String categoria, String titolo, String contenuto, int tempolettura) {
+    public NewBlogPayload(String categoria, String titolo, String contenuto, int tempolettura) {
         this.categoria = categoria;
         this.titolo = titolo;
         this.contenuto = contenuto;
